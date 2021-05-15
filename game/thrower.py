@@ -15,7 +15,8 @@ class Thrower:
         Args:
             self (Thrower): An instance of Thrower.
         """
-        self.dice = []
+        self.dice = random.randint(1, 13)
+        self.card2 = random.randint(1, 13)
         self.num_throws = 0
         
     def can_throw(self):
@@ -29,10 +30,12 @@ class Thrower:
             boolean: True if the list of dice has at least a five, or a one, or 
             the number of throws is zero; false if otherwise.
         """
-        return (self.dice.count(5) > 0 or self.dice.count(1) > 0 
+        return (self.dice > 0 or self.dice > 0 
                 or self. num_throws == 0)
 
-    def get_points(self):
+        
+
+    def get_points(self, guess):
         """Calculates the total number of points for the current throw. Fives 
         are worth 50 points. Ones are worth 100 points. 
 
@@ -42,6 +45,11 @@ class Thrower:
         Returns:
             number: The total points for the current throw.
         """
+        if guess.lower() == "h" and self.dice > self.card2:
+            return 100
+
+        else:
+            return -75
         return self.dice.count(5) * 50 + self.dice.count(1) * 100
         
     def throw_dice(self):
@@ -51,7 +59,5 @@ class Thrower:
             self (Thrower): An instance of Thrower.
         """
         self.dice.clear()
-        for i in range(5):
-            result = random.randint(1, 6)
-            self.dice.append(result) 
-        self.num_throws += 1
+        self.card2 = self.dice
+        self.dice = random.randint(1, 13)

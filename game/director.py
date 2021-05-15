@@ -18,8 +18,10 @@ class Director:
             self (Director): an instance of Director.
         """
         self.keep_playing = True
-        self.score = 0
+        self.score = 300
         self.thrower = Thrower()
+        self.guess = ""
+        
 
     def start_game(self):
         """Starts the game loop to control the sequence of play.
@@ -40,7 +42,9 @@ class Director:
             self (Director): An instance of Director.
             thrower (Thrower): An instance of Thrower.
         """
-        self.thrower.throw_dice()
+        print(f"This card is: {self.thrower.dice}")
+        self.guess = input("(h/l)")
+
         
     def do_updates(self):
         """Updates the important game information for each round of play. In 
@@ -49,7 +53,9 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        points = self.thrower.get_points()
+        self.thrower.throw_dice()
+        print(f"The next card was: {self.thrower.dice}")
+        points = self.thrower.get_points(self.guess)
         self.score += points
         
     def do_outputs(self):
@@ -62,6 +68,8 @@ class Director:
         print(f"\nYou rolled: {self.thrower.dice}")
         print(f"Your score is: {self.score}")
         if self.thrower.can_throw():
+
+
             choice = input("Roll again? [y/n] ")
             self.keep_playing = (choice == "y")
         else:
