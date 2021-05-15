@@ -50,7 +50,7 @@ class Thrower:
 
         else:
             return -75
-        return self.dice.count(5) * 50 + self.dice.count(1) * 100
+        # return self.dice.count(5) * 50 + self.dice.count(1) * 100
         
     def throw_dice(self):
         """Throws the dice by randomly generating five new values. 
