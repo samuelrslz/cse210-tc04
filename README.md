@@ -36,5 +36,6 @@ root                    (project root folder)
 
 ## Authors
 ---
-* TODO: Add your names and emails here
-Kevin Jones, Samuel Rios-Lazo, Matthew Behymer
+- Kevin Jones
+- Samuel Rios-Lazo
+- Matthew Behymer
